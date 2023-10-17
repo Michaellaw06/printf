@@ -1,7 +1,3 @@
-#pragma GCC diagnostic ignored "-Wpedantic" 
-#pragma GCC diagnostic ignored "-Wextra" 
-#pragma GCC diagnostic ignored "-Werror
-
 #include "main.h"
 
 /************************* WRITE HANDLE *************************/

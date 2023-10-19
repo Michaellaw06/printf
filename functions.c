@@ -4,37 +4,39 @@
 
 /**
  * print_char - Prints a char
- * @types: List a of arguments
- * @buffer: Buffer array to handle print
- * @flags:  Calculates active flags
+ * @args: List of arguments
+ * @buffer: Buffer array for printing
+ * @flags: Active flags
  * @width: Width
  * @precision: Precision specification
  * @size: Size specifier
- * Return: Number of chars printed
+ * Return: Number of characters printed
  */
-int print_char(va_list types, char buffer[],
+int print_char(va_list args, char buffer[],
 	int flags, int width, int precision, int size)
 {
-	char c = va_arg(types, int);
+	char c = va_arg(args, int);
 
 	return (handle_write_char(c, buffer, flags, width, precision, size));
 }
+
 /************************* PRINT A STRING *************************/
+
 /**
  * print_string - Prints a string
- * @types: List a of arguments
- * @buffer: Buffer array to handle print
- * @flags:  Calculates active flags
- * @width: get width.
+ * @args: List of arguments
+ * @buffer: Buffer array for printing
+ * @flags: Active flags
+ * @width: Width
  * @precision: Precision specification
  * @size: Size specifier
- * Return: Number of chars printed
+ * Return: Number of characters printed
  */
-int print_string(va_list types, char buffer[],
+int print_string(va_list args, char buffer[],
 	int flags, int width, int precision, int size)
 {
 	int length = 0, i;
-	char *str = va_arg(types, char *);
+	char *str = va_arg(args, char *);
 
 	UNUSED(buffer);
 	UNUSED(flags);
@@ -62,33 +64,35 @@ int print_string(va_list types, char buffer[],
 			for (i = width - length; i > 0; i--)
 				write(1, " ", 1);
 			return (width);
-		}
-		else
-		{
-			for (i = width - length; i > 0; i--)
-				write(1, " ", 1);
-			write(1, &str[0], length);
-			return (width);
-		}
+	}
+	else
+	{
+		for (i = width - length; i > 0; i--)
+			write(1, " ", 1);
+		write(1, &str[0], length);
+		return (width);
+	}
 	}
 
 	return (write(1, str, length));
 }
+
 /************************* PRINT PERCENT SIGN *************************/
+
 /**
  * print_percent - Prints a percent sign
- * @types: Lista of arguments
- * @buffer: Buffer array to handle print
- * @flags:  Calculates active flags
- * @width: get width.
+ * @args: List of arguments
+ * @buffer: Buffer array for printing
+ * @flags: Active flags
+ * @width: Width
  * @precision: Precision specification
  * @size: Size specifier
- * Return: Number of chars printed
+ * Return: Number of characters printed
  */
-int print_percent(va_list types, char buffer[],
+int print_percent(va_list args, char buffer[],
 	int flags, int width, int precision, int size)
 {
-	UNUSED(types);
+	UNUSED(args);
 	UNUSED(buffer);
 	UNUSED(flags);
 	UNUSED(width);
